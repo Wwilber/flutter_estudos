@@ -5,6 +5,8 @@ class ImagesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // PARA SABER A RESOLUÇÃO DO CELULAR:
+    print(MediaQuery.of(context).devicePixelRatio);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Images Page', style: TextStyle(color: Colors.white)),
@@ -15,12 +17,30 @@ class ImagesPage extends StatelessWidget {
           children: [
             Container(
               width: 200,
-              height: 200,
-              color: Colors.red,
-              child: Image.asset(
-                'assets/images/Paisagem_no_inhotim.jpg',
-                fit: BoxFit.cover,
-                // fit: BoxFit.contain,
+              height: 250,
+              // IMAGEM COMO BACKGROUND:
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/paisagem.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  'Paisagem',
+                  style: TextStyle(
+                    backgroundColor: Colors.red.withValues(alpha: 0.7),
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                // color: Colors.red,
+                // child: Image.asset(
+                //   'assets/images/Paisagem_no_inhotim.jpg',
+                //   // fit: BoxFit.cover,
+                //   // fit: BoxFit.contain,
+                // ),
               ),
             ),
             Container(
