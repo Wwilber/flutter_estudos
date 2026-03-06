@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_maonamassa/home/home_page.dart';
-import 'package:flutter_maonamassa/home/images/images_page.dart';
+import 'package:flutter_maonamassa/navegacao/home_page.dart' as navegacao;
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const HomePage(),
+      home: const navegacao.HomePage(),
     );
   }
 }
