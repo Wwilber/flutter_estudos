@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_maonamassa/navegacao/page3.dart';
 
 class Page2 extends StatelessWidget {
+  static final String routeName = '/page2';
   const Page2({super.key});
 
   @override
@@ -9,7 +10,7 @@ class Page2 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Page 2', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.brown,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: // CENTRALIZA A COLUNA(Column) NA HORIZONTAL(Center):
@@ -18,10 +19,10 @@ class Page2 extends StatelessWidget {
           // CENTRALIZA OS FILHOS DA COLUNA NA VERTICAL:
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // CRIA UM BOTÃO PARA NAVEGAR PARA A PAGE 3:
+            // BOTÃO DE NAVEGAÇÃO VIA CLASSE DA PÁGINA:
             ElevatedButton(
               onPressed: () {
-                // NAVEGA PARA A PAGE 3 USANDO O MÉTODO PUSH DO NAVIGATOR:
+                // NAVEGAÇÃO PELO MÉTODO PUSH QUE EMPILHA UMA PÁGINA EM CIMA DA OUTRA:
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     // DEFINE O NOME DA ROTA PARA A PAGE 3:
@@ -31,8 +32,8 @@ class Page2 extends StatelessWidget {
                 );
               },
               // NOME DO BOTÃO
-              child: Text('Page3 via PAGE-VIA PUSH'),
-              // COR DO BOTÃO:
+              child: Text('Page 3 via PAGE - PUSH'),
+              // FORMATA O BOTÃO:
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
@@ -42,16 +43,16 @@ class Page2 extends StatelessWidget {
                 ),
               ),
             ),
+
             ElevatedButton(
               onPressed: () {
-                // FECHA A PAGE 2  COM O POP:
+                // NAVEGAÇÃO PELO MÉTODO POP: PECHA A PÁGINA ATUAL
                 Navigator.of(context).pop();
               },
-              // NOME DO BOTÃO
-              child: Text('feha page - POP'),
-              // COR DO BOTÃO:
+              child: Text('FECHA A PÁGINA "Page 2" - POP'),
+              // FORMATA O BOTÃO:
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.pink,
+                backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
                 // ESTILO DO BOTÃO(QUADRADO OU REDONDO):
                 shape: const RoundedRectangleBorder(
@@ -59,8 +60,31 @@ class Page2 extends StatelessWidget {
                 ),
               ),
             ),
+            // NAVEGAÇÃO UTILIZANDO O MÉTODO: pushRep
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                // NAVEGAÇÃO PELO MÉTODO pushReplacement: SUBSTITUI A PÁGINA ATUAL PELA NOVA PÁGINA:
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    settings: RouteSettings(name: 'page3'),
+                    builder: (context) => Page3(),
+                  ),
+                );
+              },
+              child: Text('Page 3 via PAGE - pushReplacement'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                foregroundColor: Colors.white,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
+              ),
+            ),
+            ElevatedButton(
+              // BOTÃO DE NAVEGAÇÃO VIA NOME DA ROTA:
+              onPressed: () {
+                Navigator.of(context).pushNamed('/page3');
+              },
               child: Text('Page3 via NAMED'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,

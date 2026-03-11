@@ -8,8 +8,8 @@ class Page3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PAGE 3', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.red,
+        title: const Text('Page 3', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.green,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: // CENTRALIZA A COLUNA(Column) NA HORIZONTAL(Center):
@@ -20,7 +20,7 @@ class Page3 extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                //
+                // Navigator.of(context).pushReplacement(
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     settings: RouteSettings(name: 'page4'),
@@ -30,10 +30,10 @@ class Page3 extends StatelessWidget {
               },
               child: const Text(
                 // NOME DO BOTÃO:
-                'page 4 via PAGE - REPLACEMENT',
+                'Page 4 via PAGE - PUSH',
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
                 // ESTILO DO BOTÃO(QUADRADO OU REDONDO):
                 shape: const RoundedRectangleBorder(
@@ -43,14 +43,13 @@ class Page3 extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // FECHA A PAGE 2  COM O POP:
+                // NAVEGAÇÃO PELO MÉTODO POP: PECHA A PÁGINA ATUAL
                 Navigator.of(context).pop();
               },
-              // NOME DO BOTÃO
-              child: Text('feha page - POP'),
-              // COR DO BOTÃO:
+              child: Text('FECHA A PÁGINA "Page 3" - POP'),
+              // FORMATA O BOTÃO:
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.pink,
+                backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
                 // ESTILO DO BOTÃO(QUADRADO OU REDONDO):
                 shape: const RoundedRectangleBorder(
@@ -58,8 +57,30 @@ class Page3 extends StatelessWidget {
                 ),
               ),
             ),
+            // NAVEGAÇÃO UTILIZANDO O MÉTODO: pushReplacement:
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                // NAVEGAÇÃO PELO MÉTODO pushReplacement: SUBSTITUI A PÁGINA ATUAL PELA NOVA PÁGINA:
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    settings: RouteSettings(name: 'page4'),
+                    builder: (context) => Page4(),
+                  ),
+                );
+              },
+              child: Text('Page 4 via PAGE - pushReplacement'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                foregroundColor: Colors.white,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/page4');
+              },
               child: const Text(
                 // NOME DO BOTÃO:
                 'page 4 via NAMED',

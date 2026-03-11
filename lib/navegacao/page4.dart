@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_maonamassa/navegacao/home_page.dart';
 import 'package:flutter_maonamassa/navegacao/page1.dart';
 
 class Page4 extends StatelessWidget {
@@ -7,13 +8,76 @@ class Page4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('PAGE 4')),
+      appBar: AppBar(
+        title: const Text('Page 4', style: TextStyle(color: Colors.white)),
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: Colors.orange,
+      ),
       body: // CENTRALIZA A COLUNA(Column) NA HORIZONTAL(Center):
       Center(
         child: Column(
           // CENTRALIZA OS FILHOS DA COLUNA NA VERTICAL:
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ElevatedButton(
+              onPressed: () {
+                // NAVEGAÇÃO PELO MÉTODO PUSH QUE EMPILHA UMA PÁGINA EM CIMA DA OUTRA:
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    // DEFINE O NOME DA ROTA PARA A HOME PAGE:
+                    settings: RouteSettings(name: 'Home Page'),
+                    builder: (context) => HomePage(),
+                  ),
+                );
+              },
+              // NOME DO BOTÃO
+              child: Text('Home Page via PAGE - PUSH'),
+              // FORMATA O BOTÃO:
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                // ESTILO DO BOTÃO(QUADRADO OU REDONDO):
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // NAVEGAÇÃO PELO MÉTODO POP: PECHA A PÁGINA ATUAL
+                Navigator.of(context).pop();
+              },
+              child: Text('FECHA A PÁGINA "Page 4" - POP'),
+              // FORMATA O BOTÃO:
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                // ESTILO DO BOTÃO(QUADRADO OU REDONDO):
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
+              ),
+            ),
+            // NAVEGAÇÃO UTILIZANDO O MÉTODO: pushReplacement:
+            ElevatedButton(
+              onPressed: () {
+                // NAVEGAÇÃO PELO MÉTODO pushReplacement: SUBSTITUI A PÁGINA ATUAL PELA NOVA PÁGINA:
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    settings: RouteSettings(name: 'home page'),
+                    builder: (context) => HomePage(),
+                  ),
+                );
+              },
+              child: Text('Home Page via PAGE - pushReplacement'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                foregroundColor: Colors.white,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
+              ),
+            ),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushAndRemoveUntil(
@@ -30,8 +94,9 @@ class Page4 extends StatelessWidget {
               },
               child: const Text(
                 // NOME DO BOTÃO:
-                'page 4 via PAGE - REPLACEMENT',
+                'page 4 via PAGE - pushAndRemoveUntil',
               ),
+
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
                 foregroundColor: Colors.white,
@@ -43,23 +108,11 @@ class Page4 extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // FECHA A PAGE 2  COM O POP:
-                Navigator.of(context).pop();
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/page1',
+                  ModalRoute.withName('/page2'),
+                );
               },
-              // NOME DO BOTÃO
-              child: Text('feha page - POP'),
-              // COR DO BOTÃO:
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.pink,
-                foregroundColor: Colors.white,
-                // ESTILO DO BOTÃO(QUADRADO OU REDONDO):
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.zero,
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {},
               child: const Text(
                 // NOME DO BOTÃO:
                 'page 4 via NAMED',
