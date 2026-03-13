@@ -5,6 +5,7 @@ import 'package:flutter_maonamassa/navegacao/page1.dart';
 import 'package:flutter_maonamassa/navegacao/page2.dart';
 import 'package:flutter_maonamassa/navegacao/page3.dart';
 import 'package:flutter_maonamassa/navegacao/page4.dart';
+import 'package:flutter_maonamassa/navegacao_params/lista.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,12 +22,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       // home: const navegacao.HomePage(),
       // home: const ImagesPage(),
+
+      // DEFINIR PÁGINA INICIAL DO APP:
+      initialRoute: ('/navegacao_param'),
       routes: {
         '/': (_) => navegacao.HomePage(),
         '/page1': (_) => Page1(),
         Page2.routeName: (_) => Page2(),
         '/page3': (_) => Page3(),
         '/page4': (_) => Page4(),
+        '/navegacao_param': (_) => Lista(),
       },
     );
   }
