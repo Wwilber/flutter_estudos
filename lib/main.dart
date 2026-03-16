@@ -5,6 +5,7 @@ import 'package:flutter_maonamassa/navegacao/page1.dart';
 import 'package:flutter_maonamassa/navegacao/page2.dart';
 import 'package:flutter_maonamassa/navegacao/page3.dart';
 import 'package:flutter_maonamassa/navegacao/page4.dart';
+import 'package:flutter_maonamassa/navegacao_params/detalhe.dart';
 import 'package:flutter_maonamassa/navegacao_params/lista.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       // home: const navegacao.HomePage(),
       // home: const ImagesPage(),
 
-      // DEFINIR PÁGINA INICIAL DO APP:
+      // DEFINIR PÁGINA INICIAL DO APP(primeira página):
       initialRoute: ('/navegacao_param'),
       routes: {
         '/': (_) => navegacao.HomePage(),
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/page3': (_) => Page3(),
         '/page4': (_) => Page4(),
         '/navegacao_param': (_) => Lista(),
+        '/detalhe': (_) => Detalhe(),
       },
     );
   }
